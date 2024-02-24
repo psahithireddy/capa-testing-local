@@ -144,7 +144,7 @@ jobs:
         BN_LICENSE: ${{ secrets.BN_LICENSE }}
       run: pytest -v tests/test_binja_features.py  # explicitly refer to the binja tests for performance. other tests run above.
 
-    ghidra-tests:
+  ghidra-tests:
     name: Ghidra tests for ${{ matrix.python-version }}
     runs-on: ubuntu-20.04
     needs: [tests]
