@@ -4,3 +4,6 @@
 [submodule "tests/data"]
 	path = tests/data
 	url = ../capa-testfiles.git
+[submodule "tests/data/dotnet/dnfile-testfiles"]
+	path = tests/data/dotnet
+	url = https://github.com/malwarefrank/dnfile-testfiles.git
