@@ -194,4 +194,3 @@ jobs:
         cat ../output.log
         exit_code=$(cat ../output.log | grep exit | awk '{print $NF}')
         exit $exit_code
- 
