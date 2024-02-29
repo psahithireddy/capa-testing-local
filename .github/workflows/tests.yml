@@ -187,6 +187,7 @@ jobs:
         python -m pip install -r .github/ghidrathon/requirements.txt
         python .github/ghidrathon/ghidrathon_configure.py $(pwd)/.github/ghidra/ghidra_${{ matrix.ghidra-version }}_PUBLIC
         unzip .github/ghidrathon/Ghidrathon-v${{ matrix.ghidrathon-version }}.zip -d .github/ghidra/ghidra_${{ matrix.ghidra-version }}_PUBLIC/Ghidra/Extensions
+        
     - name: Install pyyaml
       run: sudo apt-get install -y libyaml-dev
     - name: Install capa
