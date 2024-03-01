@@ -170,6 +170,10 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: ${{ matrix.java-version }}
+    - name: Set up Gradle ${{ matrix.gradle-version }} 
+      uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+      with:
+        gradle-version: ${{ matrix.gradle-version }}
     - name: Install Ghidra ${{ matrix.ghidra-version }} 
       run: |
         mkdir ./.github/ghidra
@@ -178,8 +182,8 @@ jobs:
     - name: Install Ghidrathon
       run : |
         mkdir ./.github/ghidrathon
-        wget "https://github.com/mandiant/Ghidrathon/releases/download/v${{ matrix.ghidrathon-version }}/Ghidrathon-v${{ matrix.ghidrathon-version}}.zip" -O ./.github/ghidrathon/ghidrathon-${{ matrix.ghidrathon-version }}.zip
-        unzip .github/ghidrathon/ghidrathon-${{ matrix.ghidrathon-version }}.zip -d .github/ghidrathon/
+        wget "https://github.com/mandiant/Ghidrathon/releases/download/v${{ matrix.ghidrathon-version }}/Ghidrathon-v${{ matrix.ghidrathon-version}}.zip" -O ./.github/ghidrathon/ghidrathon-v${{ matrix.ghidrathon-version }}.zip
+        unzip .github/ghidrathon/ghidrathon-v${{ matrix.ghidrathon-version }}.zip -d .github/ghidrathon/
         python -m pip install -r .github/ghidrathon/requirements.txt
         python .github/ghidrathon/ghidrathon_configure.py $(pwd)/.github/ghidra/ghidra_${{ matrix.ghidra-version }}_PUBLIC
         unzip .github/ghidrathon/Ghidrathon-v${{ matrix.ghidrathon-version }}.zip -d .github/ghidra/ghidra_${{ matrix.ghidra-version }}_PUBLIC/Ghidra/Extensions
@@ -194,3 +198,4 @@ jobs:
         cat ../output.log
         exit_code=$(cat ../output.log | grep exit | awk '{print $NF}')
         exit $exit_code
+ 
